@@ -10,7 +10,7 @@ export default function Home() {
       <div className={styles.homeContainer}>
         <div className={styles.texts}>
           <p className={styles.smallText}>Maya, your XGPT AI Assistant!</p>
-          <p className={styles.bigText}>TRANSFORMING YOUR IDEAS INTO ENGAGING HACKATHONS & BOUNTIES EFFORTLESSLY AND PLAYFULLY</p>
+          <p className={styles.bigText}>Unleash your potential with Maya: Crafting Hackathons and Bounties Made Effortless and Fund</p>
           <Link
               className={`button ${styles.button}`}
               href="/try"
