@@ -116,4 +116,38 @@
     opacity: 0;
   }
 }
-    
+
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 50px;
+  gap: 25px;
+}
+
+.resultSection {
+  width: 100%;
+}
+
+.resultContainer .resultSection span {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;  
+
+  color: #FFFFFF;
+}
+
+.resultContainer .resultSection p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: justify;
+  margin-top: 15px;
+
+  color: #E0E0E0;
+}

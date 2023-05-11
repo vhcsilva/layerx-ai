@@ -6,12 +6,15 @@ import Choice from "../components/steps/choice";
 import Hackathon from "../components/steps/hackathon";
 import Loading from "../components/steps/loading";
 import Bounty from "../components/steps/bounty";
+import HackathonResult from "../components/hackathon-result";
+import BountyResult from "../components/bounty-result";
 
 export default function Home() {
   const [step, setStep] = useState(0);
   const [typing, setTyping] = useState(true);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
   const [choice, setChoice] = useState();
+  const [result, setResult] = useState<any>();
   const messageRef = useRef(null);
   
   const [hackatonData, setHackatonData] = useState({
@@ -80,6 +83,16 @@ export default function Home() {
         message: `I'm creating the best hackathon for you, it can take a few seconds.`,
         component: <Loading />
       }
+    },
+    {
+      hackathon: {
+        message: `Here it is the hackathon`,
+        component: <HackathonResult result={result} />
+      },
+      bounty: {
+        message: `Here it is the bounty`,
+        component: <BountyResult result={result}  />
+      }
     }
   ];
 
@@ -112,10 +125,31 @@ export default function Home() {
   function handleSubmit() {
     nextStep();
 
-    console.log({
-      hackatonData,
-      bountyData
-    });
+    const hackathonResult = {
+      overview: "This hackathon is themed around The Simpsons game and invites participants to come up with innovative ideas and solutions to improve the game experience. Participants can form teams and work on their ideas throughout the event, with the opportunity to present their work and compete for prizes.",
+      themes: "The Simpsons game, game design, game development, user experience",
+      deliverables: "Participants are expected to create a working prototype or minimum viable product (MVP) that showcases their idea and how it can improve the game experience. The prototype should be accompanied by a brief presentation that explains the idea and its potential impact.",
+      judgingCriteria: "The judges will evaluate the prototypes based on the following criteria: innovation, creativity, technical complexity, user experience, and potential impact. Bonus points will be awarded for ideas that incorporate the theme of The Simpsons game and its characters.",
+      prizes: "The top three teams will receive cash prizes as follows: 1st place - $5,000; 2nd place - $3,000; 3rd place - $2,000. In addition, all participants will receive a certificate of participation and the opportunity to network with industry professionals.",
+      timeline: {
+        start: "11-05-2023",
+        end: "20-05-2023",
+        events: [
+          "Opening ceremony and team formation - 11-05-2023",
+          "Workshops and mentorship sessions - 12-05-2023 to 15-05-2023",
+          "Submission deadline - 19-05-2023",
+          "Presentations and judging - 20-05-2023",
+          "Closing ceremony and announcement of winners - 20-05-2023",
+        ]
+      }
+    };
+
+    setTimeout(() => {
+      if (choice === "hackaton") setResult(hackathonResult);
+      else setResult(hackathonResult);
+
+      nextStep();
+    }, 5000);
   }
 
   useEffect(() => {
